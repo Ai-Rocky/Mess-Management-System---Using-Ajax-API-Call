@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <title>Authenticate - MMS</title>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 border-bottom mb-5 text-center">
+          <h1 class="display-2">Mess Management System</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-10 m-auto">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item ml-auto mr-5">
+            <a
+              style="font-size:20px;"
+              class="nav-link active"
+              id="home-tab"
+              data-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+              >Create Mess</a
+            >
+          </li>
+          <li class="nav-item mr-auto ml-5">
+            <a
+              style="font-size:20px;"
+              class="nav-link"
+              id="profile-tab"
+              data-toggle="tab"
+              href="#profile"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+              >Login Mess</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <form id="signup" method="post">
+              <div class="row m-2">
+                <div class="col-12" id="signupAlertBox">
+                  <div
+                    class="alert alert-danger"
+                    id="signupAlertDanger"
+                    role="alert"
+                  >
+                    A simple danger alert—check it out!
+                  </div>
+                  <div
+                    class="alert alert-success"
+                    id="signupAlertSuccess"
+                    role="alert"
+                  >
+                    A simple danger alert—check it out!
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">User Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      id="username"
+                      aria-describedby="usernameHelp"
+                      placeholder="Enter username"
+                    />
+                    <small id="usernameHelp" class="text-danger"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter email"
+                    />
+                    <small id="emailHelp" class="text-danger"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      id="password"
+                      placeholder="Enter Password"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="phone"
+                      id="phone"
+                      placeholder="Enter Phone"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="address"
+                      id="address"
+                      placeholder="Enter Address"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="messusername">Mess Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="messusername"
+                      id="messusername"
+                      placeholder="Enter Mess Username"
+                    />
+                  </div>
+                </div>
+                <div class="col-6 m-auto">
+                  <div class="form-group form-check ml-5">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="exampleCheck1"
+                    />
+                    <label class="form-check-label" for="exampleCheck1"
+                      >Agree with <a href="#">Terms & Conditions</a></label
+                    >
+                  </div>
+                  <button type="submit" class="btn btn-primary ml-5 mr-2 px-5">
+                    Submit
+                  </button>
+                  <button type="reset" class="btn btn-info ml-2 px-5">
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <form action="../Manager/index.html" id="login" method="post">
+              <div class="row m-3">
+                <div class="col-12" id="loginAlertBox">
+                  <div class="alert alert-danger" id="loginAlert" role="alert">
+                    A simple danger alert—check it out!
+                  </div>
+                </div>
+                <div class="col-6 m-auto">
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter email"
+                    />
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      id="password"
+                      placeholder="Enter Password"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary px-5">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      if (localStorage.getItem("token")) {
+        location.href = "../Manager/index.html";
+      }
+    </script>
+    <script src="../../script/Auth/registraton.js"></script>
+    <script src="../../script/Auth/login.js"></script>
+  </body>
+</html>
