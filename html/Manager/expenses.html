@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="icon" href="../Images/favicon2.png" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+
+    <!-- Datatable CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+      crossorigin="anonymous"
+    />
+
+    <title>Member - MMS</title>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row border-bottom py-3" style="background: #EEF3FA;">
+        <div class="col-6 text-center">
+          <h1 class="display-4" id="title" style="font-size: 2rem">
+            Mess Management System
+          </h1>
+          <!-- <p class="lead">To make clearances</p> -->
+        </div>
+        <div class="col-6 align-self-center text-center">
+          <div class="dropdown">
+            <button
+              class="btn bg-transparent dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span>
+                <i class="fas fa-user-secret"></i>
+                <span id="user">Manager</span></span
+              >
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="../Manager/profile.html"
+                ><i class="fas fa-user-circle"></i> My Profile</a
+              >
+              <a class="dropdown-item" id="logout" href="../Auth/index.html"
+                ><i class="fas fa-sign-out-alt"></i> Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3 border-right">
+          <h1 class="display-4 py-3 border-bottom" style="font-size: 30px;">
+            <a
+              class="text-success"
+              href="index.html"
+              style="text-decoration: none;"
+            >
+              <i class="fas fa-tachometer-alt"></i> Dashboard</a
+            >
+          </h1>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="member.html">
+                <i class="fas fa-users"></i> Members</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="category.html">
+                <i class="fas fa-align-center"></i> Category</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="savings.html">
+                <i class="fas fa-money-bill-alt"></i> Savings</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="expenses.html">
+                <i class="fas fa-money-bill"></i> Expenses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="meal.html">
+                <i class="fas fa-utensils"></i> Meal</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="col-9">
+          <div class="row border-bottom py-3">
+            <div class="col-9">
+              <h1
+                id="totalExpenses"
+                class="display-4"
+                style="font-size: 30px;"
+              ></h1>
+            </div>
+            <div class="col-3 text-right">
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-success"
+                data-toggle="modal"
+                data-target="#create"
+              >
+                Create New
+              </button>
+            </div>
+          </div>
+          <div class="col-12 py-3">
+            <div class="form-group col-12" id="selectAlertBox">
+              <div class="alert alert-danger" id="selectAlert" role="alert">
+                A simple danger alert—check it out!
+              </div>
+            </div>
+            <table id="expensesTable" class="display">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>User</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Summary</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <!-- <tbody id="selectTbody"></tbody> -->
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script src="../../script/common.js"></script>
+    <script src="../../script/Expenses/select.js"></script>
+    <script src="../../script/Expenses/create.js"></script>
+    <script src="../../script/Expenses/update.js"></script>
+    <script src="../../script/Expenses/delete.js"></script>
+  </body>
+</html>
+
+<!-- Create Modal -->
+<div
+  class="modal fade bd-example-modal-lg"
+  id="create"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Expenses</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="createExpenses" method="POST">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-12" id="createAlertBox">
+              <div class="alert alert-danger" id="createAlert" role="alert">
+                A simple danger alert—check it out!
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Member</label>
+              <select class="form-control memberList" name="userId">
+                <option>--- Select Member ---</option>
+              </select>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Category</label>
+              <select class="form-control categoryList" name="categoryId">
+                <option>--- Select Category ---</option>
+              </select>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Amount</label>
+              <input type="number" name="amount" class="form-control" />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Summary</label>
+              <input type="text" name="summary" class="form-control" />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Date</label>
+              <input type="date" name="date" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="d-none" id="expensesId">id</div>
+
+<!-- Edit Modal -->
+<div
+  class="modal fade bd-example-modal-lg"
+  id="edit"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Savings</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="editExpenses" method="POST">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-12" id="editAlertBox">
+              <div class="alert alert-danger" id="editAlert" role="alert">
+                A simple danger alert—check it out!
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Member</label>
+              <select class="form-control memberList" name="userId">
+                <!-- <option id="userOption">--- Select Member ---</option> -->
+              </select>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Category</label>
+              <select class="form-control categoryList" name="categoryId">
+                <!--
+                  <option id="categoryOption">--- Select Category ---</option>
+                -->
+              </select>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Amount</label>
+              <input type="number" name="amount" class="form-control" />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Summary</label>
+              <input type="text" name="summary" class="form-control" />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Date</label>
+              <input type="date" name="date" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+  class="modal fade"
+  id="delete"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Delete Savings</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="deleteExpenses" method="POST">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-12" id="deleteAlertBox">
+              <div class="alert alert-danger" id="deleteAlert" role="alert">
+                A simple danger alert—check it out!
+              </div>
+            </div>
+            <div class="form-group col-12">Are you sure to delete ?</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
